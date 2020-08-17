@@ -11,7 +11,7 @@ public class HeroId {
     private Appearance AppearanceObject;
     private Work WorkObject;
     private Connections ConnectionsObject;
-    private Image ImageObject;
+    private Image image;
 
 
     // Getter Methods
@@ -49,7 +49,7 @@ public class HeroId {
     }
 
     public Image getImage() {
-        return ImageObject;
+        return image;
     }
 
     // Setter Methods
@@ -86,8 +86,8 @@ public class HeroId {
         this.ConnectionsObject = connectionsObject;
     }
 
-    public void setImage(Image imageObject) {
-        this.ImageObject = imageObject;
+    public void setImage(Image image) {
+        this.image = image;
     }
 }
 

@@ -1,12 +1,16 @@
 package com.example.examentecnico.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.examentecnico.DetailActivity;
+import com.example.examentecnico.MainActivity;
 import com.example.examentecnico.R;
 import com.example.examentecnico.mdata.HeroId;
 import com.squareup.picasso.OkHttp3Downloader;
@@ -48,12 +52,25 @@ public class HeroesAdapter extends RecyclerView.Adapter<HeroHolder> {
 
         holder.nombreitemlista.setText(h.getName());
         Picasso.Builder builderF = new Picasso.Builder(context);
+
+        String urll;
+//        urll = h.getImage().getUrl().replaceAll("/","\\");
 //        holder.imagenitemlista.setBackgroundResource(R.drawable.ic_launcher_background);
+
+        Picasso.get().load(h.getImage().getUrl()).into(holder.imagenitemlista);
 
 //        builderF.downloader(new OkHttp3Downloader(context));
 //        builderF.build().load(h.getImage().getUrl()).placeholder(R.drawable.ic_launcher_background).error(R.mipmap.ic_launcher).centerCrop().into(holder.imagenitemlista);
-    }
 
+        holder.nombreitemlista.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetailActivity.class);
+                context.startActivity(intent);
+            }
+        });
+    }
+    
     @Override
     public int getItemCount() {
         return list.size();

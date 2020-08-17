@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.examentecnico.Adapters.HeroesAdapter;
 import com.example.examentecnico.mdata.HeroId;
+import com.example.examentecnico.mdata.Image;
 import com.example.examentecnico.utility.Conexiones.HerosAccesos;
 import com.example.examentecnico.utility.Conexiones.HerosApiConexion;
 import com.example.examentecnico.utility.HeroUtility;
@@ -65,30 +66,16 @@ public class MainActivity extends AppCompatActivity {
         recyclerLista.setAdapter(adapter);
         recyclerLista.setHasFixedSize(true);
 
-        recyclerLista.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-                return false;
-            }
-
-            @Override
-            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-
-                View child = rv.findChildViewUnder(e.getX(), e.getY());
-
-                    int position = rv.getChildAdapterPosition(child);
-
-                    HeroUtility.position = position;
-
-                    Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-            }
-        });
+//        recyclerLista.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int itemPosition = recyclerLista.indexOfChild(v);
+//                HeroUtility.position = itemPosition;
+//                Toast.makeText(getApplicationContext(),"WEQWE", Toast.LENGTH_LONG).show();
+//                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
 
@@ -114,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<HeroId> call, Response<HeroId> response) {
                     if (response.body() != null) {
-
                         HeroUtility.listaHeroes.add(response.body());
                     } else {
                         Toast.makeText(getApplicationContext(), "Vacio", Toast.LENGTH_LONG).show();
@@ -153,11 +139,11 @@ public class MainActivity extends AppCompatActivity {
 
                 HeroUtility.x = 1;
 
-                for(int i=1; i<=20; i++) {
+                for(int i=1; i<=10; i++) {
                     try {
                         obtenerTodos();
                         HeroUtility.x = HeroUtility.x + 1;
-                        Thread.sleep(1500);
+                        Thread.sleep(400);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

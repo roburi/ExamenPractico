@@ -32,22 +32,6 @@ public class HeroesAdapter extends RecyclerView.Adapter<HeroHolder> {
         this.list = list;
         this.context = context;
 
-        final LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerLista.getLayoutManager();
-        recyclerLista.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                totalHeroes = linearLayoutManager.getItemCount();
-                ultimoVisible = linearLayoutManager.findLastVisibleItemPosition();
-
-            }
-
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-            }
-        });
-
     }
 
     @Override
@@ -64,9 +48,10 @@ public class HeroesAdapter extends RecyclerView.Adapter<HeroHolder> {
 
         holder.nombreitemlista.setText(h.getName());
         Picasso.Builder builderF = new Picasso.Builder(context);
+//        holder.imagenitemlista.setBackgroundResource(R.drawable.ic_launcher_background);
 
-        builderF.downloader(new OkHttp3Downloader(context));
-        builderF.build().load(h.getImage().getUrl()).placeholder(R.drawable.ic_launcher_background).error(R.mipmap.ic_launcher).centerCrop().into(holder.imagenitemlista);
+//        builderF.downloader(new OkHttp3Downloader(context));
+//        builderF.build().load(h.getImage().getUrl()).placeholder(R.drawable.ic_launcher_background).error(R.mipmap.ic_launcher).centerCrop().into(holder.imagenitemlista);
     }
 
     @Override

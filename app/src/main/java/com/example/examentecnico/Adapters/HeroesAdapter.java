@@ -53,9 +53,9 @@ public class HeroesAdapter extends RecyclerView.Adapter<HeroHolder> {
     @Override
     public HeroHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(context).inflate(R.layout.item_lista, parent, false);
+        View vis = LayoutInflater.from(context).inflate(R.layout.item_lista, parent, false);
 
-        return new HeroHolder(v);
+        return new HeroHolder(vis);
 
     }
 

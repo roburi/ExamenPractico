@@ -16,6 +16,7 @@ import retrofit2.Response;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerLista;
     private HeroesAdapter adapter;
     private ProgressDialog progressDialog;
-    private  int x;
     private ArrayList<HeroId> listaHeroes;
 
 
@@ -49,12 +49,13 @@ public class MainActivity extends AppCompatActivity {
 
         initAll();
         listaHeroes = new ArrayList<>();
-        x = 1;
+        HeroUtility.x = 1;
+
         do {
 
             obtenerTodos();
-            x +=x;
-        }while (x == 11);
+            HeroUtility.x +=HeroUtility.x;
+        }while (HeroUtility.x == 11);
 
         Toast.makeText(getApplicationContext(), String.valueOf(listaHeroes.size()), Toast.LENGTH_LONG).show();
 
@@ -63,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerLista.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         recyclerLista.setLayoutManager(gridLayoutManager);
+
+        
 
 //        progressDialog.dismiss();
     }
@@ -80,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     private void obtenerTodos() {
 
             HerosAccesos obtenerDatos = HerosApiConexion.getHeroInstance();
-            Call<HeroId> llamar = obtenerDatos.goBuscarHero(x);
+            Call<HeroId> llamar = obtenerDatos.goBuscarHero(1);
 
             llamar.enqueue(new Callback<HeroId>() {
                 @Override

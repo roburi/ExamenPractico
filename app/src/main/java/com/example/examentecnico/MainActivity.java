@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         obtenerTodos();
                         HeroUtility.x = HeroUtility.x + 1;
-                        Thread.sleep(400);
+                        Thread.sleep(500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

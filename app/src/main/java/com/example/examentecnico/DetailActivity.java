@@ -56,6 +56,11 @@ public class DetailActivity extends AppCompatActivity {
             public void onResponse(Call<HeroId> call, Response<HeroId> response) {
                 if (response.body() != null) {
                     Picasso.get().load(response.body().getImage().getUrl()).into(imageViewDetalle);
+                    txtdetalleNombre.setText(response.body().getName());
+
+                    txtDetalle.setText(HeroUtility.listaHeroes.get(HeroUtility.position).getName()+"\n" +
+                ""+HeroUtility.listaHeroes.get(HeroUtility.position).getBiography()+"\n" +
+                ""+HeroUtility.listaHeroes.get(HeroUtility.position).getAppearance());
                 } else {
                     Toast.makeText(getApplicationContext(), "Vacio", Toast.LENGTH_LONG).show();
                 }
